@@ -1,0 +1,12 @@
+- hosts: all
+  vars:
+    basic_var: My first variable
+  tasks:
+  - name: display value
+    debug: 
+      msg: "{{ basic_var }}"
+
+# ansible-playbook basic.yaml
+
+
+#no hosts matched error: change hosts from all to localhost
