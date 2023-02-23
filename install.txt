@@ -1,0 +1,8 @@
+ubuntu
+apt install ansible
+
+ansible --version
+
+alpine
+apk add ansible
+ansible --version
