@@ -6,9 +6,11 @@
     yum:
       name: httpd
       state: installed
+  - name: Restart Apache
+    service:
+      name: httpd
+      state: restarted
   - name: Remove Apache
     yum:
       name: httpd
       state: removed
-
-##ansible-playbook -i aws.ini playbook.yaml 

@@ -1,0 +1,61 @@
+# - hosts: web1
+#   remote_user: root
+#   become: true
+#   vars:
+#     page_title: "Placeholder"
+#     page_description: |
+#       Hello from Ansible Challenge.
+#   tasks:
+#   - name: yum update
+#     yum:
+#       name: pkg
+#       state: latest
+#   - name: Install Apache
+#     yum:
+#       name: httpd
+#       state: installed
+#   # - name: Remove Apache
+#   #   yum:
+#   #     name: httpd
+#   #     state: removed
+#   # - name: install nginx
+#   #   ansible.builtin.apt:
+#   #     name: nginx
+#   #     state: latest
+#   - name: apply page template
+#     ansible.builtin.template:
+#       src: templates/placeholder.html.j2
+# #nginx      dest: /var/www/html/index.html
+#       dest: /var/www/html/index.html
+
+
+
+##*warp 9 solution*
+- hosts: web1
+  remote_user: root
+  become: true
+  tasks:
+  - name: udpate all packages
+    yum:
+      name: '*'
+      state: latest
+  - name: install Apache
+    yum:
+      name: httpd
+      state: installed
+  - name: create html
+    shell: echo "Hello from Ansible Challenge!!!!" > /var/www/html/index.html
+    args:
+      executable: /bin/bash
+    notify:
+      - Reload Apache
+  - name: public IP
+    shell:
+      cmd: curl http://169.254.169.54/latest/meta-data/public-ipv4
+    register: curl
+  - debug var=curl.stdout_lines
+  handlers:
+    - name: reload Apache
+      service:
+        name: httpd
+        state: reloaded

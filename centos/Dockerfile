@@ -19,7 +19,7 @@ CMD ["/usr/sbin/sshd","-D"]
 ##
 #docker image build . -t centos-ssh
 #docker container run -p 22:22 --name=web centos-ssh
-###### check that first 22 is not in use I fixed this by using 23 ie 23:22
+###### check first 22 is not in use I fixed this by using 23 ie 23:22
 
 ##set root password
 # sudo su
