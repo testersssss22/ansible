@@ -1,0 +1,13 @@
+- hosts: web
+  remote_user: root
+  tasks:
+  - name: Install Apache
+    apt:
+      name: apache2
+      state: present
+  - name: Remove Apache
+    apt:
+      name: httpd
+      state: absent
+
+##ansible-playbook -i aws.ini playbook.yaml 

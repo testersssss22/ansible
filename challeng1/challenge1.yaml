@@ -1,0 +1,21 @@
+######solution
+all:
+  hosts:
+    mail.mycorp.local:
+    smtp.mycorp.local:
+    auth.mycorp.local:
+  children:  
+    itlappsrv:
+      children:
+        londonappservers:
+          hosts:
+            app01.idn.mycorp.local:
+            app02.ind.mycorp.lcaol:
+        texasappservers:
+          hosts:
+            app03.tx.mycorp.local:
+            app04.tx.mycorp.local:
+    domaincontrollers:
+      children:
+        dc01.mycorp.local:
+        dc02.mycorp.local:
