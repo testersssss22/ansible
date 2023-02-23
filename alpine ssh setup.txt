@@ -1,0 +1,9 @@
+apk add openrc --no-cache
+apk add openssh
+
+rc-update add sshd
+rc-status
+/etc/init.d/sshd start
+
+touch /run/openrc/softlevel
+/etc/init.d/sshd start
