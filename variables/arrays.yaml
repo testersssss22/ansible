@@ -1,0 +1,11 @@
+- hosts: localhost
+  vars:
+    courses:
+      - ansible
+      - terraform
+      - docker
+    basic_var: My first variable
+  tasks:
+  - name: display value
+    debug: 
+      msg: "{{ courses [0] }}"

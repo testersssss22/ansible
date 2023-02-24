@@ -1,0 +1,15 @@
+Encrypt:
+ansible-vault encrypt <name of yaml file>
+
+View:
+ansible-vault view <name of yaml file>
+
+to use enrypted file
+ansible-playbook -i <name of yaml file> --ask-vault-pass playbook.yaml
+
+
+Change password:
+ansible-vault rekey <name of yaml file>
+
+decrypt:
+ansibl-vault decrypt <name of yaml file>

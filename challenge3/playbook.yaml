@@ -1,0 +1,7 @@
+- hosts: web
+  remote_user: root
+  become: true
+#  roles: 
+# here cd into folder and run:  ansible-galaxy init web
+# here cd into folder and run:  ansible-galaxy init db
+#then setup roles go into web hadnler main. yaml and setup

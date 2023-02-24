@@ -1,0 +1,7 @@
+install pip
+on alpine:
+apk add py3-pip
+
+
+then:
+pip install hvac

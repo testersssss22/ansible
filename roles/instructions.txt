@@ -1,0 +1,43 @@
+ansible-galaxy init apache
+
+
+made plabook.yaml outside of apache folder
+
+copied handlers into handlers > main.yaml
+copied code into tasks > main.yaml
+
+
+To run playbook:
+ansible-playbook -i aws.ini roles/playbook.yaml
+
+
+To cleanup
+ansible-galaxy init cleaner
+
+
+
+------------------------------------------------------------------------
+requirements.yaml
+- name: geerlingguy.docker
+- src: https://github.com/companieshouse/ansible-role-apache.git
+  name: apache-ch
+
+installing roles:
+ansible-galaxy install --roles-path . -r requirements.yaml
+------------------------------------------------------------------------
+
+collections found in ansible-galaxy with install method
+ansible-galaxy collection install geerlingguy.k8s
+
+
+
+modify as follows requirements.yaml
+roles:
+  - name: geerlingguy.docker
+  - src: https://github.com/companieshouse/ansible-role-apache.git
+    name: apache-ch
+collection:
+  - name: geerlingguy.k8s
+
+install via:
+ansible-galaxy collection install -p . -r requirements.yaml

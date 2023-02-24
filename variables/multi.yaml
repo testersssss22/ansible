@@ -1,0 +1,21 @@
+- hosts: web1
+  remote_user: root
+  become: true
+  vars:
+    packages:
+      - httpd
+      - nano
+      - mysql
+  tasks:
+  - name: Install Software
+    yum:
+      name: "{{ item }}"
+      state: installed
+    loop: "{{ packages }}"
+  - name: Remove Software
+    yum:
+      name: "{{ item }}"
+      state: installed
+    loop: "{{ packages }}"
+
+#ansible-playbook -i aws.ini multi.yaml

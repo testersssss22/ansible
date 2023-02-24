@@ -1,0 +1,10 @@
+- hosts: localhost
+  tasks:
+  - name: display value
+    debug: 
+      msg: "{{ http_port }}"
+  - name: display value
+    debug: 
+      msg: "{{ server_name }}"
+
+#ansible-playbook -e "@vars.yaml" var_file_demo.yaml
